@@ -1,0 +1,12 @@
+:root {
+    --header-bg: #1A6A73;
+    --sidebar-bg: #1E3A51;
+  }
+  
+  #top-menu {
+    background-color: var(--header-bg);
+  }
+  
+  #sidebar {
+    background-color: var(--sidebar-bg);
+  }  

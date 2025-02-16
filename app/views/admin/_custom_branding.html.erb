@@ -1,0 +1,36 @@
+<h2>Custom Branding Settings</h2>
+
+<!-- Logo Upload Form -->
+<form action="/admin/upload_logo" method="POST" enctype="multipart/form-data">
+    <label>Upload Custom Logo:</label>
+    <input type="file" name="logo" required>
+    <button type="submit">Upload</button>
+</form>
+
+<!-- Current Logo Preview -->
+<% if File.exist?(Rails.root.join('public', 'custom', 'logo.png')) %>
+    <p>Current Logo:</p>
+    <img src="/custom/logo.png" alt="Custom Logo" width="200">
+<% end %>
+
+<hr>
+
+<!-- Color Customization Form -->
+<form action="/admin/update_theme" method="POST">
+    <label>Header Background:</label>
+    <input type="color" name="header_color" value="<%= @branding&.header_color || '#1A6A73' %>">
+  
+    <label>Sidebar Background:</label>
+    <input type="color" name="sidebar_color" value="<%= @branding&.sidebar_color || '#1E3A51' %>">
+
+    <button type="submit">Save</button>
+</form>
+
+<style>
+    body {
+        background-color: <%= @branding&.sidebar_color || '#1E3A51' %>;
+    }
+    #top-menu {
+        background-color: <%= @branding&.header_color || '#1A6A73' %>;
+    }
+</style>
